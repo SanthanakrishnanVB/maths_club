@@ -77,6 +77,7 @@
             list-style: none;
             gap: 25px;
             align-items: center;
+            transition: 0.3s ease-in-out;
         }
 
         .nav-links a {
@@ -97,7 +98,15 @@
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
         }
 
-        /* --- Hero Section (Video Background Update) --- */
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
         .hero {
             position: relative;
             height: 100vh;
@@ -107,35 +116,33 @@
             align-items: center;
             text-align: center;
             margin-top: 60px;
-            overflow: hidden; /* Ensures video stays within bounds */
+            overflow: hidden; 
         }
 
-        /* The actual video element */
         .hero-video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures video covers the area without stretching */
-            z-index: -2; /* Places video behind everything */
+            object-fit: cover; 
+            z-index: -2; 
         }
 
-        /* Dark overlay to make text readable */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Adjust darkness here */
+            background: rgba(0, 0, 0, 0.6); 
             z-index: -1;
         }
 
-        /* Content wrapper to keep text on top */
         .hero-content {
             position: relative;
             z-index: 1;
+            padding: 0 20px;
         }
 
         .hero h2 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -163,7 +170,7 @@
         }
 
         .carousel-slide {
-            min-width: 25%; /* Shows 4 items */
+            min-width: 25%; 
             padding: 0 15px;
             box-sizing: border-box; 
         }
@@ -178,17 +185,10 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-        }
-        .mag-card-copy {
-            background: var(--glass);
-            border: 10px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 80px;
-            text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
         .mag-card:hover {
@@ -219,6 +219,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9rem;
+            margin-top: auto;
         }
 
         /* Arrows */
@@ -244,9 +245,6 @@
         .carousel-btn.prev { left: 0; }
         .carousel-btn.next { right: 0; }
 
-        @media(max-width: 1024px) { .carousel-slide { min-width: 50%; } }
-        @media(max-width: 600px) { .carousel-slide { min-width: 100%; } }
-
         /* --- Dashboard --- */
         section { padding: 80px 8%; }
         .dashboard-grid {
@@ -268,13 +266,12 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-
+            flex-grow: 1;
         }
         .data-card h3 { margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
-        .data-item { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px;border-left: 4px solid var(--accent); }
-        .notice-img { width: 100%; height: 200px; object-fit: cover; object-position: top; border-radius: 10px; margin-bottom: 10px; border: 2px solid rgba(255,255,255,0.1); transition: 0.3s; cursor: pointer; }
-        .notice-img:hover { transform: scale(1.02); border-color: var(--accent); }
-        .view-all { margin-top: 5px; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 8px; border-radius: 8px; cursor: pointer; transition: 0.3s; width: 100%; }
+        .data-item { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px;border-left: 4px solid var(--accent); cursor: pointer;}
+        
+        .view-all { margin-top: 15px; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 8px; border-radius: 8px; cursor: pointer; transition: 0.3s; width: 100%; }
         .view-all:hover { background: var(--accent); color: white; }
 
         /* --- MODAL (POPUP) --- */
@@ -293,7 +290,7 @@
         .modal-content {
             background: #1e293b;
             width: 90%;
-            max-width: 600px; /* Default width */
+            max-width: 600px;
             border-radius: 20px;
             border: 1px solid var(--accent);
             padding: 20px;
@@ -305,7 +302,9 @@
 
         .modal-body {
             overflow-y: auto;
-            flex-grow: 1; /* Allows body to expand */
+            flex-grow: 1;
+            max-height: 70vh;
+            padding: 10px;
         }
 
         .close-btn {
@@ -322,14 +321,14 @@
         .section-title { text-align: center; margin-bottom: 50px; position: relative; font-size: 2.5rem; }
         .section-title::after { content: ''; width: 60px; height: 4px; background: var(--accent); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
         .faculty-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .faculty-card { background: linear-gradient(145deg, #1e293b, #0f172a); width: 350px; padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .faculty-card { background: linear-gradient(145deg, #1e293b, #0f172a); width: 100%; max-width: 350px; padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
         .faculty-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 20px; object-fit: cover;}
         .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         .student-card { text-align: center; }
         .student-card img { width: 120px; height: 120px; border-radius: 20px; margin-bottom: 15px; filter: grayscale(40%); transition: 0.3s; object-fit: cover;}
         .student-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
-        /* --- JOIN CLUB SECTION STYLES --- */
+        /* --- JOIN CLUB SECTION --- */
         #join {
             background: linear-gradient(to top, #020617, #0f172a);
             text-align: center;
@@ -400,42 +399,83 @@
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
         }
+
         .event-card {
-    background: #1e293b;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
 
-.event-card:hover {
-    background: #2d3748;
-    transform: translateY(-2px);
-}
-
-.event-title {
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 600;
-}
-
-.event-date {
-    font-size: 0.9rem;
-    color: #cbd5e1;
-}
-        .modal-body {
-    max-height: 70vh;
-    overflow-y: auto;
-    padding: 10px;
-}
+        .event-card:hover {
+            background: #2d3748;
+            transform: translateY(-2px);
+        }
 
         footer { text-align: center; padding: 40px; background: #020617; border-top: 1px solid rgba(255,255,255,0.1); }
         .loading { font-size: 0.8rem; color: #94a3b8; font-style: italic; }
+
+        /* =======================================================
+           MOBILE & TABLET RESPONSIVE OPTIMIZATIONS 
+           ======================================================= */
+        @media(max-width: 1024px) { 
+            .carousel-slide { min-width: 50%; } 
+        }
+
+        @media(max-width: 768px) {
+            section { padding: 60px 5%; }
+            .section-title { font-size: 2rem; }
+            
+            /* Navbar & Hamburger */
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 75px; /* height of navbar */
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 20px 0;
+                clip-path: circle(0% at 100% 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+            .nav-links.active {
+                clip-path: circle(150% at 100% 0);
+            }
+            .nav-brand h1 { font-size: 1.2rem; }
+            .logo { width: 35px; height: 35px; }
+
+            /* Typography */
+            .hero h2 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+
+            /* Fix Pricing Cards Overlay */
+            .fee-card { width: 100%; max-width: 300px; }
+            .fee-card[style*="transform: scale"] {
+                transform: scale(1) !important;
+                z-index: 1 !important;
+            }
+            
+            /* Action Button Setup */
+            .download-action-btn {
+                font-size: 1rem;
+                padding: 12px 20px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media(max-width: 600px) { 
+            .carousel-slide { min-width: 100%; }
+            .faculty-card { padding: 25px 15px; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -455,22 +495,28 @@
             <img src="./image.png" alt="Logo" class="logo">
             <h1>MATHS CLUB</h1>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#magazine">Magazine</a></li> 
-            <li><a href="#incharge">Incharge</a></li>
-            <li><a href="#students">Team</a></li>
-            <li><a href="#join" class="btn-download">Join Club</a></li>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#magazine" onclick="toggleMenu()">Magazine</a></li> 
+            <li><a href="#incharge" onclick="toggleMenu()">Incharge</a></li>
+            <li><a href="#students" onclick="toggleMenu()">Team</a></li>
+            <li><a href="#join" class="btn-download" onclick="toggleMenu()">Join Club</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
+        <div class="hero-overlay"></div>
         <video autoplay muted loop playsinline class="hero-video">
             <source src="./Maths Club Orientation Video 2025 - 2026.mp4" type="video/mp4">
         </video>
-        
-        
-            
+        <div class="hero-content">
+            <h2>Welcome to Maths Club</h2>
+            <p>Unlocking the Infinite Potential within Mathematics</p>
         </div>
     </section>
 
@@ -479,10 +525,7 @@
         
         <div class="carousel-container">
             <button class="carousel-btn prev" onclick="moveSlide(-1)"> <i class="fas fa-chevron-left"></i> </button>
-            
-            <ul class="carousel-track" id="mag-track">
-            </ul>
-
+            <ul class="carousel-track" id="mag-track"></ul>
             <button class="carousel-btn next" onclick="moveSlide(1)"> <i class="fas fa-chevron-right"></i> </button>
         </div>
     </section>
@@ -501,17 +544,17 @@
             </div>
             <div class="data-card">
                 <h3><i class="fas fa-bullhorn"></i> Weekly Event Notices</h3>
-                <div id="notices-container" class="preview" style="overflow-y: hidden; text-align: center;"><p class="loading">Loading...</p></div>
-                <button class="view-all" onclick="openModal('notices')">View All Events</button>
+                <div id="notices-container" class="preview" style="overflow-y: hidden; text-align: left;"><p class="loading">Loading...</p></div>
+                <button class="view-all" onclick="openModal('notices')">View All Notices</button>
             </div>
         </div>
     </section>
+
     <section id="incharge">
         <h2 class="section-title">Club Incharges</h2>
         <div class="faculty-container">
-           
             <div class="faculty-card">
-                <img src="./principal.png"alt="Faculty" class="faculty-img">
+                <img src="./principal.png" alt="Faculty" class="faculty-img">
                 <h3>Dr.S.Arivazhagan</h3>
                 <p style="color: var(--accent)">Patron</p>
             </div>
@@ -521,11 +564,7 @@
                 <p style="color: var(--accent)">President</p>
             </div>
         </div>
-    </section>
-    <section id="incharge">
-      
-        <div class="faculty-container">
-           
+        <div class="faculty-container" style="margin-top: 40px;">
             <div class="faculty-card">
                 <img src="./Screenshot 2026-01-13 214526.png" alt="Faculty" class="faculty-img">
                 <h3>Dr.R.Chandra Guru Sekar</h3>
@@ -575,19 +614,14 @@
                 <div class="fee-card">
                     <h3>4th Year</h3>
                     <div class="price"><span class="currency">₹</span>100</div>
-                   
                 </div>
-                
                 <div class="fee-card" style="transform: scale(1.1); border-color: var(--secondary); z-index: 2;">
                     <h3>2nd Year</h3>
                     <div class="price"><span class="currency">₹</span>300</div>
-                    
                 </div>
-
                 <div class="fee-card">
                     <h3>3rd Year</h3>
                     <div class="price"><span class="currency">₹</span>200</div>
-                   
                 </div>
             </div>
 
@@ -612,19 +646,23 @@
 
     <script>
         /* --- JAVASCRIPT --- */
+        // Mobile menu toggle logic
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
 
         const eventsSheetUrl = "./eventsheet.csv"; 
         const winnersSheetUrl = "./winnersheet.csv";
         const noticesSheetUrl = "./noticesheet.csv"; 
         
-        // MAGAZINE DATA (Replace 'pdf' with your Drive Embed Links)
+        // MAGAZINE DATA
         const magazineData = [
             { id: 1, title: "January 2026", cover: "./jan front.png", pdf: "https://drive.google.com/file/d/1lS3lvVlZTtc2Pyn_awsynwpqW0bS0tp_/preview" },
             { id: 2, title: "December 2025", cover: "./dec front.png", pdf: "https://drive.google.com/file/d/19gUqa0LXjV7bbTF5Xg3KY03vNG8UJUsL/preview" },
             { id: 3, title: "September 2025", cover: "./sep front.png", pdf: "https://drive.google.com/file/d/1iBf-lkgpc4DnXwIwWIBf6u4VtEJxe5z-/preview" },
             { id: 4, title: "July 2025", cover: "./july front.png", pdf: "https://drive.google.com/file/d/1Aktp9gPS804Alzsn_x8CNHknhJb4KwDy/preview" },
             { id: 5, title: "April 2025", cover: "./april front page.png", pdf: "https://drive.google.com/file/d/13iRJ2i9uzJXuwAbC8RnzA7yXhhBdYT9i/preview" }
-          
         ];
 
         // Carousel Logic
@@ -657,6 +695,12 @@
             track.style.transform = `translateX(-${currentIndex * movePercent}%)`;
         }
 
+        // Handle window resize dynamically for carousel
+        window.addEventListener('resize', () => {
+            currentIndex = 0;
+            track.style.transform = `translateX(0)`;
+        });
+
         // Fetch Data
         let allEvents = [], allWinners = [], allNotices = [];
         function csvToJSON(csv) {
@@ -681,59 +725,51 @@
                 if(eventsSheetUrl) {
                     const res = await fetch(eventsSheetUrl);
                     allEvents = csvToJSON(await res.text());
-                    
-                } 
-                else { 
-                    allEvents = [{Title:"Math Marathon", Date:"Oct 28"}]; }
-                    document.getElementById('events-preview').innerHTML = allEvents.slice(0,3).map(e=>`
-                        <div class="mag-card">
-                            <div class="data-item" onclick="openModal('notice-reader', '${e.Url}')">
-                                <strong>${e.Title}</strong><br>
-                                <small>${e.Date}</small>
-                            </div>
-                        </div>`).join('');
+                } else { 
+                    allEvents = [{Title:"Math Marathon", Date:"Oct 28"}]; 
+                }
+                document.getElementById('events-preview').innerHTML = allEvents.slice(0,3).map(e=>`
+                    <div class="data-item" onclick="openModal('notice-reader', '${e.Url}')">
+                        <strong>${e.Title}</strong><br>
+                        <small>${e.Date}</small>
+                    </div>`).join('');
             } catch(e){
-                console.error("Error fetching data:", e); // This will print the error to the Console
-                document.getElementById('events-preview').innerHTML = "<p>Error loading data.</p>";
+                console.error("Error fetching data:", e);
+                document.getElementById('events-preview').innerHTML = "<p>Demo Loading.</p>";
             }
 
-            //Wiiners Events
+            //Winners Events
             try {
                 if(winnersSheetUrl) {
                     const res = await fetch(winnersSheetUrl);
                     allWinners = csvToJSON(await res.text());
-                } 
-                else { 
-                    allWinners = [{Name:"Jane Doe", Event:"1st - Quiz"}]; }
-                    document.getElementById('winners-preview').innerHTML = allWinners.slice(0,3).map(w=>`
-                    <div class="mag-card">
-                        <div class="data-item" onclick="openModal('notice-reader', '${w.Url}')">
-                            <strong>${w.Name}</strong><br>
-                            <small>${w.Event}</small>
-                        </div>
+                } else { 
+                    allWinners = [{Name:"Jane Doe", Event:"1st - Quiz"}]; 
+                }
+                document.getElementById('winners-preview').innerHTML = allWinners.slice(0,3).map(w=>`
+                    <div class="data-item" onclick="openModal('notice-reader', '${w.Url}')">
+                        <strong>${w.Name}</strong><br>
+                        <small>${w.Event}</small>
                     </div>`).join('');
             } catch(e){}
 
+            // Notices
             try {
                 if(noticesSheetUrl) {
                     const res = await fetch(noticesSheetUrl);
                     allNotices = csvToJSON(await res.text());
-                } 
-                else { 
+                } else { 
                     allNotices = [{Title:"Math Marathon", Date:"Oct 28"}];
                 }
                 document.getElementById('notices-container').innerHTML = allNotices.slice(0,3).map(e=>`
-                    <div class="mag-card">
-                        <div class="data-item" onclick="openModal('notice-reader', '${e.Url}')">
-                            <strong>${e.Title}</strong><br>
-                            <small>${e.Date}</small>
-                        </div>
+                    <div class="data-item" onclick="openModal('notice-reader', '${e.Url}')">
+                        <strong>${e.Title}</strong><br>
+                        <small>${e.Date}</small>
                     </div>`).join('');
-                
             } catch(e){}
         }
 
-        // --- UPDATED MODAL LOGIC (FIX FOR SMALL READER) ---
+        // --- UPDATED MODAL LOGIC ---
         function openModal(type, payload = null) {
             const modal = document.getElementById('dataModal');
             const modalBox = document.getElementById('modal-box');
@@ -743,10 +779,10 @@
             modal.style.display = 'flex';
             body.innerHTML = ""; 
 
-            // 1. Reset standard size for normal popups
+            // Standard Reset
             modalBox.style.maxWidth = '600px'; 
             modalBox.style.width = '90%';
-            modalBox.style.height = 'auto'; // allow auto height
+            modalBox.style.height = 'auto'; 
             body.style.height = 'auto';
             body.style.padding = '10px';
             body.style.display = 'flex';
@@ -754,77 +790,35 @@
             body.style.gap = '10px';
 
             if (type === 'events') {
-                 title.innerText = "All Upcoming";
-    body.innerHTML = allEvents.map(e => `
-        <div class="event-card">
-            <div class="data-item" onclick="openModal('notice-reader', '${e.Url}')">
-                <strong style="color:#fff;">${e.Title}</strong><br>
-                <small style="color:#cbd5e1;">${e.Date}</small>
-            </div>
-        </div>`).join('');
-
-    // Set modal size for events
-    modalBox.style.maxWidth = '600px'; 
-    modalBox.style.width = '90%';
-    modalBox.style.height = '80vh';  // Limit height
-    body.style.maxHeight = '70vh';  // Allow scroll
-    body.style.overflowY = 'auto';  // Enable vertical scroll
+                title.innerText = "All Upcoming Events";
+                body.innerHTML = allEvents.map(e => `
+                    <div class="event-card" onclick="openModal('notice-reader', '${e.Url}')">
+                        <strong style="color:#fff;">${e.Title}</strong>
+                        <small style="color:#cbd5e1;">${e.Date}</small>
+                    </div>`).join('');
             } 
             else if (type === 'winners') {
                 title.innerText = "Hall of Fame";
                 body.innerHTML = allWinners.map(w => `
-                <div class="event-card" onclick="openModal('notice-reader', '${w.Url}')">
-                    <div class="data-item">
-                        <strong style="color:#fff;">${w.Name}</strong><br>
+                    <div class="event-card" onclick="openModal('notice-reader', '${w.Url}')">
+                        <strong style="color:#fff;">${w.Name}</strong>
                         <small style="color:#cbd5e1;">${w.Event}</small>
-                    </div>
-                </div>`).join('');
-                modalBox.style.maxWidth = '600px'; 
-    modalBox.style.width = '90%';
-    modalBox.style.height = '80vh';  // Limit height
-    body.style.maxHeight = '70vh';  // Allow scroll
-    body.style.overflowY = 'auto';  // Enable vertical scroll
+                    </div>`).join('');
             }
             else if (type === 'notices') {
                 title.innerText = "Weekly Notices";
                 body.innerHTML = allNotices.map(w => `
-                <div class="event-card" onclick="openModal('notice-reader', '${w.Url}')">
-                    <div class="data-item">
-                        <strong style="color:#fff;">${w.Title}</strong><br>
+                    <div class="event-card" onclick="openModal('notice-reader', '${w.Url}')">
+                        <strong style="color:#fff;">${w.Title}</strong>
                         <small style="color:#cbd5e1;">${w.Date}</small>
-                    </div>
-                </div>`).join('');
-                modalBox.style.maxWidth = '600px'; 
-    modalBox.style.width = '90%';
-    modalBox.style.height = '80vh';  // Limit height
-    body.style.maxHeight = '70vh';  // Allow scroll
-    body.style.overflowY = 'auto';  // Enable vertical scroll
+                    </div>`).join('');
             }
-            else if (type === 'magazine') {
-                // 2. FORCE BIG SIZE FOR MAGAZINE
-                title.innerText = "Magazine Reader";
+            else if (type === 'magazine' || type === 'notice-reader') {
+                title.innerText = type === 'magazine' ? "Magazine Reader" : "Document Reader";
                 modalBox.style.maxWidth = '95%'; 
-                modalBox.style.width = '95%';      // Wide screen
-                modalBox.style.height = '95vh';    // Tall screen (95% of viewport height)
+                modalBox.style.width = '95%';      
+                modalBox.style.height = '95vh';    
                 
-                // Calculate height for body (Total - Header height) to fit iframe perfectly
-                body.style.height = 'calc(100% - 50px)'; 
-                body.style.overflow = 'hidden';
-
-                body.innerHTML = `
-                    <iframe src="${payload}" width="100%" height="100%" style="border:none; border-radius: 8px; background: white;">
-                        <p>Your browser does not support PDFs. <a href="${payload}">Download</a>.</p>
-                    </iframe>
-                `;
-            }
-            else if (type === 'notice-reader') {
-                // 2. FORCE BIG SIZE FOR MAGAZINE
-                title.innerText = "Notice Reader";
-                modalBox.style.maxWidth = '95%'; 
-                modalBox.style.width = '95%';      // Wide screen
-                modalBox.style.height = '95vh';    // Tall screen (95% of viewport height)
-                
-                // Calculate height for body (Total - Header height) to fit iframe perfectly
                 body.style.height = 'calc(100% - 50px)'; 
                 body.style.overflow = 'hidden';
 
@@ -843,7 +837,6 @@
             if (event.target == document.getElementById('dataModal')) closeModal();
         }
         window.onload = fetchDriveData;
-
     </script>
 </body>
 </html>
